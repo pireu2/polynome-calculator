@@ -1,7 +1,13 @@
 package org.example;
 
+import org.example.gui.View;
+
+import javax.swing.*;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        JFrame frame = new View("Polynomial Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }
