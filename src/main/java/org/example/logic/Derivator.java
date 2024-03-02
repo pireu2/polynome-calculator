@@ -1,8 +1,18 @@
 package org.example.logic;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Derivator implements Operation {
     @Override
     public Polynomial performOperation(Polynomial p1) {
-        return null;
+        HashMap<Integer, Double> newCoefficients = new HashMap<>();
+        for(Map.Entry<Integer, Double> entry : p1.getTerms().entrySet()){
+            if(entry.getKey() == 0){
+                continue;
+            }
+            newCoefficients.put(entry.getKey() -  1, entry.getKey() * entry.getValue());
+        }
+        return new Polynomial(newCoefficients);
     }
 }
