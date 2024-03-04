@@ -1,5 +1,7 @@
 package org.example.logic;
 
+import org.example.data.Polynomial;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +12,6 @@ public class Integrator implements Operation{
         for(Map.Entry<Integer, Double> entry : p1.getTerms().entrySet()){
             newCoefficients.put(entry.getKey() + 1, entry.getValue() / (entry.getKey() + 1));
         }
-
-
         return new Polynomial(newCoefficients);
     }
 }

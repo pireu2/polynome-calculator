@@ -1,5 +1,6 @@
 package org.example.gui;
 
+import org.example.data.Polynomial;
 import org.example.logic.*;
 
 import java.awt.event.ActionEvent;

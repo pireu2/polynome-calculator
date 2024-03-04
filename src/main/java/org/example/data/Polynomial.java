@@ -1,4 +1,4 @@
-package org.example.logic;
+package org.example.data;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -43,6 +43,7 @@ public class Polynomial {
         }
         return polynomialString.toString().strip();
     }
+
     private HashMap<Integer, Double> parseString(String polynomial) throws NumberFormatException {
         polynomial = preProcessPolynomial(polynomial);
         HashMap<Integer, Double> parsedPolynomial = new HashMap<>();
@@ -72,10 +73,11 @@ public class Polynomial {
 
         if(term.contains("^")){
             String[] parts = term.split("x\\^");
-            parsedTerm.add(Double.parseDouble(parts[0]));
+            parsedTerm.add(Double.parseDouble(parts[0].equals("+") ? "1" : parts[0].equals("-") ? "-1" : parts[0]));
             parsedTerm.add(Integer.parseInt(parts[1]));
         } else if(term.contains("x")){
-            parsedTerm.add(Double.parseDouble(term.substring(0, term.length() - 1)));
+            term = term.substring(0, term.length() - 1);
+            parsedTerm.add(Double.parseDouble(term.equals("+") ? "1" : term.equals("-") ? "-1" : term));
             parsedTerm.add(1);
         } else {
             parsedTerm.add(Double.parseDouble(term));

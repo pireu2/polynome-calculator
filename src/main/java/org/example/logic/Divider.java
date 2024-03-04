@@ -1,5 +1,7 @@
 package org.example.logic;
 
+import org.example.data.Polynomial;
+
 public class Divider  implements Operation{
     @Override
     public Polynomial performOperation(Polynomial p1, Polynomial p2) throws UnsupportedOperationException {

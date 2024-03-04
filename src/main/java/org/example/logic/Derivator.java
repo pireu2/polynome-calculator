@@ -1,5 +1,7 @@
 package org.example.logic;
 
+import org.example.data.Polynomial;
+
 import java.util.HashMap;
 import java.util.Map;
 
