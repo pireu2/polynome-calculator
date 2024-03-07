@@ -45,7 +45,7 @@ public class Polynomial {
     }
 
     private HashMap<Integer, Double> parseString(String polynomial) throws NumberFormatException {
-        polynomial = preProcessPolynomial(polynomial);
+        polynomial = polynomial.replaceAll("\\s", "");
         HashMap<Integer, Double> parsedPolynomial = new HashMap<>();
         String regex = "([+-]?(?:(?:(?:\\d*[.])?\\d*x\\^\\d+)|(?:(?:\\d*[.])?\\d+x)|(?:(?:\\d*[.])?\\d+)|(?:x)))";
         Pattern pattern = Pattern.compile(regex);
@@ -73,11 +73,11 @@ public class Polynomial {
 
         if(term.contains("^")){
             String[] parts = term.split("x\\^");
-            parsedTerm.add(Double.parseDouble(parts[0].equals("+") ? "1" : parts[0].equals("-") ? "-1" : parts[0]));
+            parsedTerm.add(Double.parseDouble(parts[0].equals("+") || parts[0].isEmpty()  ? "1" : parts[0].equals("-") ? "-1" : parts[0]));
             parsedTerm.add(Integer.parseInt(parts[1]));
         } else if(term.contains("x")){
             term = term.substring(0, term.length() - 1);
-            parsedTerm.add(Double.parseDouble(term.equals("+") ? "1" : term.equals("-") ? "-1" : term));
+            parsedTerm.add(Double.parseDouble(term.equals("+") || term.isEmpty() ? "1" : term.equals("-") ? "-1" : term));
             parsedTerm.add(1);
         } else {
             parsedTerm.add(Double.parseDouble(term));
@@ -85,15 +85,5 @@ public class Polynomial {
         }
 
         return parsedTerm;
-    }
-    private String preProcessPolynomial(String polynomial){
-        polynomial = polynomial.replaceAll("\\s", "");
-        if(polynomial.startsWith("x")){
-            polynomial = "1" + polynomial;
-        }
-        if(polynomial.startsWith("-x")){
-            polynomial = "-1" + polynomial.substring(1);
-        }
-        return polynomial;
     }
 }
