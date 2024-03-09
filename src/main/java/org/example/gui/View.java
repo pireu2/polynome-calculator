@@ -71,9 +71,6 @@ public class View  extends JFrame {
         panel.add(prepareOperations());
         panel.add(prepareResult());
 
-        polynomial1.setText("x^3 - 2x^2 - 4");
-        polynomial2.setText("x - 3");
-
         setContentPane(panel);
         controller = new Controller(this);
     }
@@ -125,8 +122,6 @@ public class View  extends JFrame {
         operationsPanel.add(multiplyButton);
         operationsPanel.add(derivativeButton);
         operationsPanel.add(integrateButton);
-
-
         return operationsPanel;
     }
 }

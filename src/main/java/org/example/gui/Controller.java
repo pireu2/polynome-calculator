@@ -64,7 +64,7 @@ public class Controller implements ActionListener {
             result = performOperation(new Derivator(), p1);
         }
         else if(source == view.getIntegrateButton()) {
-            result = performOperation(new Integrator(), p1);
+            result = performOperation(new Integrator(), p1) + " + C";
         }
         else if(source == view.getModuloButton()) {
             result = performOperation(new Modulo(), p1, p2);

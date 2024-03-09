@@ -14,10 +14,8 @@ public class Divider  implements Operation{
         }
         Polynomial result = new Polynomial("0");
         Polynomial remainder = p1;
-        double lcv = p2.getCoefficient(p2.getDegree());
         while(remainder.getDegree() >= p2.getDegree()){
-            double lcr = remainder.getCoefficient(remainder.getDegree());
-            double s = lcr / lcv;
+            double s = remainder.getCoefficient(remainder.getDegree()) / p2.getCoefficient(p2.getDegree());
             Polynomial term = new Polynomial(String.format("%fx^%d", s, remainder.getDegree() - p2.getDegree()));
             result = new Adder().performOperation(result, term);
             remainder = new Subtractor().performOperation(

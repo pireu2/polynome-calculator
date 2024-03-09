@@ -43,9 +43,11 @@ public class Polynomial {
         }
         return polynomialString.toString().strip();
     }
-
     private HashMap<Integer, Double> parseString(String polynomial) throws NumberFormatException {
         polynomial = polynomial.replaceAll("\\s", "");
+        if (polynomial.isEmpty()) {
+            return new HashMap<>();
+        }
         HashMap<Integer, Double> parsedPolynomial = new HashMap<>();
         String regex = "([+-]?(?:(?:(?:\\d*[.])?\\d*x\\^\\d+)|(?:(?:\\d*[.])?\\d+x)|(?:(?:\\d*[.])?\\d+)|(?:x)))";
         Pattern pattern = Pattern.compile(regex);
@@ -57,8 +59,7 @@ public class Polynomial {
             int exponent = (int) terms.get(1);
             double coefficient = (double) terms.get(0);
             if(parsedPolynomial.containsKey(exponent)){
-                coefficient += parsedPolynomial.get(exponent);
-            }
+                coefficient += parsedPolynomial.get(exponent);            }
             else{
                 parsedPolynomial.put(exponent, coefficient);
             }
