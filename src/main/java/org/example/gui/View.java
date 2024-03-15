@@ -80,6 +80,7 @@ public class View  extends JFrame {
         JLabel resultLabel = new JLabel("Result");
         result = new TextField();
         result.setPreferredSize(new Dimension(300, 25));
+        result.setEditable(false);
         resultPanel.add(resultLabel);
         resultPanel.add(result);
         return resultPanel;
